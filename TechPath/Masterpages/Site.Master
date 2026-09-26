@@ -1,0 +1,118 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Techspire_LMS.Masterpages.Site" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="TechPath Learning System provides practical technology courses, lessons, learning resources, quizzes, and assessments." />
+
+    <title><%: string.IsNullOrWhiteSpace(Page.Title)
+        ? "TechPath Learning System"
+        : Page.Title + " | TechPath Learning System" %></title>
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body>
+    <form id="frmMain" runat="server">
+        <a class="skip-link" href="#main">Skip to main content</a>
+
+        <header class="site-header">
+            <div class="container header-inner">
+                <a href="~/Pages/Default.aspx" runat="server" class="brand">
+                    <span class="brand-mark" aria-hidden="true">TP</span>
+                    <span class="brand-copy">
+                        <span class="brand-text">TechPath</span>
+                        <span class="brand-tagline">Learning System</span>
+                    </span>
+                </a>
+            </div>
+        </header>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="~/Pages/Default.aspx" runat="server">Home</a></li>
+                    <li><a href="~/Pages/Courses.aspx" runat="server">Courses</a></li>
+                    <li><a href="~/Pages/Contact.aspx" runat="server">Contact</a></li>
+
+                    <asp:PlaceHolder ID="phGuest" runat="server">
+                        <li><a href="~/Account/Login.aspx" runat="server">Login</a></li>
+                        <li><a href="~/Account/Register.aspx" runat="server" class="btn-nav">Register</a></li>
+                    </asp:PlaceHolder>
+
+                    <asp:PlaceHolder ID="phLoggedIn" runat="server" Visible="false">
+                        <li><a href="~/Member/MyLearning.aspx" runat="server">My Learning</a></li>
+                        <li><a href="~/Account/Profile.aspx" runat="server">Profile</a></li>
+                        <li>
+                            <span class="nav-welcome">Hi, <asp:Literal ID="litWelcome" runat="server" /></span>
+                        </li>
+
+                        <asp:PlaceHolder ID="phAdmin" runat="server" Visible="false">
+                            <li><a href="~/Admin/ManageCategories.aspx" runat="server" class="admin-link">Admin Panel</a></li>
+                        </asp:PlaceHolder>
+
+                        <li>
+                            <asp:LinkButton ID="lnkLogout" runat="server"
+                                CssClass="logout-link"
+                                OnClick="lnkLogout_Click"
+                                CausesValidation="false">Logout</asp:LinkButton>
+                        </li>
+                    </asp:PlaceHolder>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="breadcrumb-bar container">
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server"
+                PathSeparator=" &rsaquo; "
+                RenderCurrentNodeAsLink="false"
+                SkipLinkText=""
+                CurrentNodeStyle-CssClass="breadcrumb-current" />
+        </div>
+
+        <main id="main" class="container site-main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-grid">
+                <section>
+                    <h3>TechPath Learning System</h3>
+                    <p class="footer-description">
+                        Build practical technology skills through structured courses,
+                        lessons, learning resources, quizzes, and assessments.
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Learning Areas</h3>
+                    <ul>
+                        <li>Programming Fundamentals</li>
+                        <li>Web Development</li>
+                        <li>Database Systems</li>
+                        <li>Cloud Computing</li>
+                        <li>Data Engineering</li>
+                        <li>Cybersecurity</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="~/Pages/Default.aspx" runat="server">Home</a></li>
+                        <li><a href="~/Pages/Courses.aspx" runat="server">Browse Courses</a></li>
+                        <li><a href="~/Pages/Contact.aspx" runat="server">Contact Us</a></li>
+                    </ul>
+                </section>
+            </div>
+
+            <p class="footer-copy">
+                &copy; <%= DateTime.Now.Year %> TechPath Learning System.
+                Developed for the Web Applications group assignment.
+            </p>
+        </footer>
+    </form>
+</body>
+</html>
