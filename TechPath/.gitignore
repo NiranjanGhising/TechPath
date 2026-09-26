@@ -1,0 +1,34 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+Debug/
+Release/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet packages
+packages/
+
+# Publish output and profiles
+publish/
+*.pubxml
+*.pubxml.user
+*.publishsettings
+
+# Local database files
+*.mdf
+*.ldf
+*.db
+*.sqlite
+
+# Logs and temporary files
+*.log
+App_Data/Logs/
+*.tmp
+*.bak
+
+# Certificates and secrets
+*.pfx
